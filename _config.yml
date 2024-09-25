@@ -2,9 +2,8 @@ theme: jekyll-dash
 title: ubermenchh (Umang Kaushik)
 description: my site
 
-# jekyll-paginate
-paginate: 1
-paginate_path: "/blog/page:num/"
+plugins:
+  - jekyll-tagging
 
 # jekyll-tagging (optional)
 tag_permalink_style: pretty

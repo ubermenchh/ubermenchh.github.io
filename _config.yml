@@ -1,6 +1,6 @@
-# theme: minima
-# title: ubermenchh (Umang Kaushik)
-# description: my site
+theme: jekyll-dash
+title: ubermenchh (Umang Kaushik)
+description: my site
 
 # jekyll-paginate
 paginate: 5

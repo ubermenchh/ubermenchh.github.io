@@ -1,7 +1,6 @@
 ---
-title: ubermenchh's blog
+title: The Crib
 ---
 
-Hey, I'm Umang Kaushik, aka ubermenchh.\
-I'm a nerd, and this is where i write about\
-things i find interesting.
+Hey, I'm Umang Kaushik (Compiler Durden on X).\
+I'm a nerd, and this is where i write about things i find interesting.

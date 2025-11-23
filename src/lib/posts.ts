@@ -11,6 +11,7 @@ export interface Post {
     title: string;
     date: string;
     description: string;
+    tags?: string[];
     content?: string;
 }
 
@@ -36,7 +37,8 @@ export function getSortedPosts() {
                 slug,
                 title: matterResult.data.title,
                 date: matterResult.data.date,
-                description: matterResult.data.description
+                description: matterResult.data.description,
+                tags: matterResult.data.tags || [],
             };
         });
 
@@ -67,6 +69,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
         title: matterResult.data.title,
         date: matterResult.data.date,
         description: matterResult.data.description,
+        tags: matterResult.data.tags || [],
         content: contentHtml
     };
 }

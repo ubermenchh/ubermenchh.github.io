@@ -2,6 +2,7 @@
 title: 'Hello World'
 date: '2025-11-23'
 description: 'This is my first blog post'
+tags: ["Welcome", "Hello"]
 ---
 
 This is my first blog post written in **Markdown**.

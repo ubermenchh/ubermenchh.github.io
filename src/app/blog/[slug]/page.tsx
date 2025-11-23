@@ -1,5 +1,8 @@
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-regular-svg-icons";
+import { faArrowLeft, faHashtag } from "@fortawesome/free-solid-svg-icons";
 
 export async function generateStaticParams() {
     const posts = getAllPostSlugs();
@@ -28,9 +31,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 { /* Back Button */}
                 <Link
                     href="/blog"
-                    className="inline-block mb-8 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                    className="inline-flex items-center gap-2 mb-8 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                 >
-                     Back to blog
+                    <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4" />
+                    Back to blog
                 </Link>
 
                 <article>
@@ -40,13 +44,29 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                             {post.title}
                         </h1>
                         <div className="flex items-center gap-4 text-zinc-600 dark:text-zinc-400">
-                            <time className="text-sm">
-                                 {post.date}
+                            <time className="flex items-center gap-2 text-sm">
+                                <FontAwesomeIcon icon={faCalendar} className="w-4 h-4" />
+                                {post.date}
                             </time>
                         </div>
                         <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
                             {post.description}
                         </p>
+
+                        {post.tags && post.tags.length > 0 && (
+                            <div className="mb-4">
+                                <div className="flex flex-wrap gap-2">
+                                    {post.tags.map((tag, index) => (
+                                        <span 
+                                            key={index}
+                                            className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </header>
 
                     {/* Post Content */}

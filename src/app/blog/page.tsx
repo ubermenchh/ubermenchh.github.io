@@ -28,6 +28,19 @@ export default function BlogPost() {
                                 <p className="text-zinc-600 dark:text-zinc-400">
                                     {post.description}
                                 </p>
+
+                                {post.tags && post.tags.length > 0 && (
+                                    <div className="flex flex-wrap gap-2 mb-2">
+                                        {post.tags.map((tag, index) => (
+                                            <span
+                                                key={index}
+                                                className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blu-200 rounded"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
                             </Link>
                         );
                     })}

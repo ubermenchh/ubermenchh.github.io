@@ -7,7 +7,7 @@ export default function Home() {
         <div className="min-h-screen bg-gray-950 dark:bg:black p-8">
             <div className="max-w-3xl mx-auto">
                 <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-8">
-                    My Blog
+                    Compiler Durden
                 </h1>
 
                 <div className="space-y-6">

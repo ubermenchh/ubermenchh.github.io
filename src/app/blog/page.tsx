@@ -1,5 +1,7 @@
 import { getSortedPosts } from "@/lib/posts";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTag } from "@fortawesome/free-solid-svg-icons";
 
 export default function BlogPost() {
     const posts = getSortedPosts();
@@ -31,15 +33,9 @@ export default function BlogPost() {
                                     </p>
 
                                     {post.tags && post.tags.length > 0 && (
-                                        <div className="flex flex-wrap gap-2 mb-2">
-                                            {post.tags.map((tag: string, index: number) => (
-                                                <span
-                                                    key={index}
-                                                    className="px-2 py-1 text-xs bg-tn-blue7 text-tn-blue border border-tn-blue0 rounded"
-                                                >
-                                                    {tag}
-                                                </span>
-                                            ))}
+                                        <div className="flex items-center gap-2 mt-3 text-sm text-tn-comment">
+                                            <FontAwesomeIcon icon={faTag} className="w-4 h-4" />
+                                            <span>{post.tags.join(", ")}</span>
                                         </div>
                                     )}
                                 </Link>

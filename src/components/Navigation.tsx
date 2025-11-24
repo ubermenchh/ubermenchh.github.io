@@ -12,29 +12,31 @@ export default function Navigation() {
     ];
 
     return (
-        <nav className="border-b border-zinc-200 dark:board-zinc-800 bg-white dark:bg-gray-950">
-            <div className="max-w-3xl mx-auto px-8 py-4">
-                <div className="flex gap-6">
-                    {tabs.map((tab) => {
-                        const isActive = pathname === tab.path;
+        <nav className="bg-tn-bg py-6">
+            <div className="max-w-3xl mx-auto">
+                <div className="p-6 border border-tn-blue bg-tn-bg-dark">
+                    <div className="flex gap-4">
+                        {tabs.map((tab) => {
+                            const isActive = pathname === tab.path;
 
-                        return (
-                            <Link
-                                key={tab.path}
-                                href={tab.path}
-                                className={`
-                                    px-4 py-2 rounded-lg transition-colors
-                                    ${
-                                        isActive
-                                            ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-black font-semibold"
-                                            : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                                    }    
-                                `}
-                            >
-                                {tab.name}
-                            </Link>
-                        )
-                    })}
+                            return (
+                                <Link
+                                    key={tab.path}
+                                    href={tab.path}
+                                    className={`
+                                        flex-1 px-8 py-4 transition-all font-semibold text-lg text-center
+                                        ${
+                                            isActive
+                                                ? "bg-tn-blue text-tn-bg shadow-sm shadow-tn-blue/50"
+                                                : "border border-tn-blue text-tn-fg-dark hover:border-tn-cyan hover:text-tn-fg"
+                                        }    
+                                    `}
+                                >
+                                    {tab.name}
+                                </Link>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         </nav>

@@ -1,36 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Tokyo Night Theme Colors */
+  --color-tn-bg: #1a1b26;
+  --color-tn-bg-dark: #16161e;
+  --color-tn-bg-highlight: #24283b;
+  --color-tn-terminal-black: #414868;
+  --color-tn-fg: #c0caf5;
+  --color-tn-fg-dark: #a9b1d6;
+  --color-tn-fg-gutter: #3b4261;
+  --color-tn-dark3: #545c7e;
+  --color-tn-comment: #565f89;
+  --color-tn-dark5: #737aa2;
+  --color-tn-blue0: #3d59a1;
+  --color-tn-blue: #7aa2f7;
+  --color-tn-cyan: #7dcfff;
+  --color-tn-blue1: #2ac3de;
+  --color-tn-blue2: #0db9d7;
+  --color-tn-blue5: #89ddff;
+  --color-tn-blue6: #b4f9f8;
+  --color-tn-blue7: #394b70;
+  --color-tn-magenta: #bb9af7;
+  --color-tn-magenta2: #ff007c;
+  --color-tn-purple: #9d7cd8;
+  --color-tn-orange: #ff9e64;
+  --color-tn-yellow: #e0af68;
+  --color-tn-green: #9ece6a;
+  --color-tn-green1: #73daca;
+  --color-tn-green2: #41a6b5;
+  --color-tn-teal: #1abc9c;
+  --color-tn-red: #f7768e;
+  --color-tn-red1: #db4b4b;
+  
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #1a1b26;
+  color: #c0caf5;
+  font-family: var(--font-jetbrains-mono), monospace;
 }
 
 .prose {
-  @apply text-zinc-800 dark:text-zinc-200;
+  @apply text-tn-fg;
 }
 
 .prose h1, .prose h2, .prose h3 {
-  @apply font-bold mt-8 mb-4;
+  @apply font-bold mt-8 mb-4 text-tn-blue;
 }
 
 .prose p {
@@ -50,7 +66,7 @@ body {
 }
 
 .prose strong {
-  @apply font-bold;
+  @apply font-bold text-tn-orange;
 }
 
 .prose em {
@@ -58,13 +74,13 @@ body {
 }
 
 .prose code {
-  @apply bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-sm;
+  @apply bg-tn-bg-highlight px-1.5 py-0.5 rounded text-sm text-tn-cyan;
 }
 
 .prose pre {
-  @apply bg-zinc-100 dark:bg-zinc-900 p-4 rounded overflow-x-auto mb-4;
+  @apply bg-tn-bg-dark p-4 rounded overflow-x-auto mb-4 border border-tn-terminal-black;
 }
 
 .prose a {
-  @apply text-blue-600 dark:text-blue-400 hover:underline;
+  @apply text-tn-blue hover:text-tn-cyan hover:underline transition-colors;
 }

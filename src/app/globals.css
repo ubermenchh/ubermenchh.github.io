@@ -41,6 +41,16 @@ body {
   font-family: var(--font-jetbrains-mono), monospace;
 }
 
+*::selection {
+  background: #3d59a1 !important;
+  color: #c0caf5 !important;
+}
+
+*::-moz-selection {
+  background: #3d59a1 !important;
+  color: #c0caf5 !important;
+}
+
 .prose {
   @apply text-tn-fg;
 }

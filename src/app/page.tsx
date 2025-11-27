@@ -6,7 +6,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 export default function Home() {
     return (
         <div className="bg-tn-bg p-8">
-            <div className="max-w-3xl mx-auto py-12">
+            <div className="max-w-5xl mx-auto py-12">
                 <section className="mb-8 p-8 border border-tn-blue bg-tn-bg-dark">
                     <div className="flex items-start gap-8">
                         {/* Profile Image */}

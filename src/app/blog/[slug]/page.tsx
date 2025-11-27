@@ -25,7 +25,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
     return (
         <div className="bg-tn-bg p-8">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-5xl mx-auto">
 
                 { /* Back Button */}
                 <Link

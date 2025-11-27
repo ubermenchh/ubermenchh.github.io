@@ -8,7 +8,7 @@ export default function BlogPost() {
 
     return (
         <div className="bg-tn-bg p-8">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-5xl mx-auto">
                 <section className="p-8 border border-tn-blue bg-tn-bg-dark">
                     <h1 className="text-4xl font-bold text-tn-fg mb-8">
                         Blog

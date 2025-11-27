@@ -1,43 +1,50 @@
 import { getSortedPosts } from "@/lib/posts";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import ContentBox from "@/components/ContentBox";
 
 export default function BlogPost() {
     const posts = getSortedPosts();
 
     return (
-        <div className="bg-tn-bg p-8">
+        <div className="p-8">
             <div className="max-w-5xl mx-auto">
-                <section className="p-8 border border-tn-blue bg-tn-bg-dark">
+                <ContentBox title="~/user/blog">
                     <h1 className="text-4xl font-bold text-tn-fg mb-8">
                         Blog
                     </h1>
 
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                         {posts.map((post) => {
                             return (
                                 <Link
                                  key={post.slug}
                                  href={`/blog/${post.slug}`}
-                                  className="block border border-tn-blue bg-tn-bg p-6 hover:border-tn-cyan hover:shadow-lg hover:shadow-tn-blue/20 transition-all"
+                                  className="group flex flex-col sm:flex-row gap-4 p-4 border border-transparent hover:border-tn-bg-highlight hover:bg-tn-bg-highlight transition-all cursor-pointer"
                                 >
-                                    <h2 className="text-2xl font-semibold text-tn-fg mb-2">
-                                        {post.title}
-                                    </h2>
-                                    <p className="text-sm text-tn-comment mb-3">
+                                    <div className="sm:w-32 flex-shrink-0 font-mono text-xs text-tn-comment pt-1">
                                         {post.date}
-                                    </p>
-                                    <p className="text-tn-fg-dark">
-                                        {post.description}
-                                    </p>
-
-                                    {post.tags && post.tags.length > 0 && (
-                                        <div className="flex items-center gap-2 mt-3 text-sm text-tn-comment">
-                                            <FontAwesomeIcon icon={faTag} className="w-4 h-4" />
-                                            <span>{post.tags.join(", ")}</span>
-                                        </div>
-                                    )}
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-lg font-bold text-white group-hover:text-tn-blue transition-colors flex items-center">
+                                            {post.title}
+                                            <FontAwesomeIcon icon={faChevronRight} className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity ml-2 text-tn-blue" />
+                                        </h3>
+                                        <p className="text-sm text-tn-fg-dark mt-1 leading-relaxed">
+                                            {post.description}
+                                        </p>
+                                        
+                                        {post.tags && post.tags.length > 0 && (
+                                            <div className="flex flex-wrap gap-2 mt-2">
+                                                {post.tags.map((tag: string) => (
+                                                    <span key={tag} className="inline-block text-xs border border-tn-bg-highlight px-2 py-0.5 rounded text-tn-cyan bg-tn-bg-dark/50">
+                                                        #{tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
                                 </Link>
                             );
                         })}
@@ -50,7 +57,7 @@ export default function BlogPost() {
                             </p>
                         </div>
                     )}
-                </section>
+                </ContentBox>
             </div>
         </div>
     );

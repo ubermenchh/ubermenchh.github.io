@@ -9,10 +9,11 @@ export default function Navigation() {
     const tabs = [
         { name: "Home", path: "/" },
         { name: "Blog", path: "/blog"},
+        { name: "Resume", path: "/resume" }
     ];
 
     return (
-        <nav className="bg-tn-bg py-6">
+        <nav className="bg-transparent py-4">
             <div className="max-w-5xl mx-auto">
                 <div className="flex gap-4">
                     {tabs.map((tab) => {
@@ -23,11 +24,11 @@ export default function Navigation() {
                                 key={tab.path}
                                 href={tab.path}
                                 className={`
-                                    flex-1 px-10 py-4 transition-all font-semibold text-lg text-center
+                                    flex-1 py-4 text-center font-mono text-sm uppercase tracking-widest transition-all duration-300 border border-tn-blue
                                     ${
                                         isActive
-                                            ? "bg-tn-blue text-tn-bg shadow-sm shadow-tn-blue/50"
-                                            : "border border-tn-blue text-tn-fg-dark hover:border-tn-cyan hover:text-tn-fg"
+                                            ? "bg-tn-fg text-tn-bg font-bold shadow-[0_0_15px_rgba(192,202,245,0.3)]"
+                                            : "bg-transparent text-tn-fg-dark hover:bg-tn-bg-highlight hover:text-white"
                                     }    
                                 `}
                             >

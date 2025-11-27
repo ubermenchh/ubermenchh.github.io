@@ -2,6 +2,7 @@ import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import ContentBox from "@/components/ContentBox";
 
 export async function generateStaticParams() {
     const posts = getAllPostSlugs();
@@ -24,7 +25,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     const post = await getPostBySlug(slug);
 
     return (
-        <div className="bg-tn-bg p-8">
+        <div className="p-8">
             <div className="max-w-5xl mx-auto">
 
                 { /* Back Button */}
@@ -36,7 +37,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     Back to blog
                 </Link>
 
-                <section className="p-8 border border-tn-blue bg-tn-bg-dark">
+                <ContentBox title={`~/user/blog/${slug}`}>
                     <article>
                         {/* Post Title */}
                         <h1 className="text-4xl md:text-5xl font-bold text-tn-fg mb-8">
@@ -58,7 +59,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                             dangerouslySetInnerHTML={{ __html: post.content || '' }}
                         />
                     </article>
-                </section>
+                </ContentBox>
             </div>
         </div>
     )

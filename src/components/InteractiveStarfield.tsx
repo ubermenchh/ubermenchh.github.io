@@ -41,7 +41,7 @@ export default function InteractiveStarfield() {
     };
 
     const initStars = () => {
-      const starCount = Math.min(Math.floor(window.innerWidth / 20), 80); 
+      const starCount = Math.min(Math.floor(window.innerWidth / 15), 120); 
       stars = [];
       for (let i = 0; i < starCount; i++) {
         stars.push({

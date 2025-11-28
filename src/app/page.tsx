@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import ContentBox from "@/components/ContentBox";
+import SolarSystem from "@/components/SolarSystem";
 
 export default function Home() {
     return (
@@ -81,6 +82,12 @@ export default function Home() {
                         </p>
                     </div>
                 </ContentBox>
+
+                <div className="mt-8">
+                    <ContentBox title="~/system/solar">
+                        <SolarSystem />
+                    </ContentBox>
+                </div>
             </div>
         </div>
     );

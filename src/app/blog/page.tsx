@@ -21,7 +21,7 @@ export default function BlogPost() {
                                 <Link
                                  key={post.slug}
                                  href={`/blog/${post.slug}`}
-                                  className="group flex flex-col sm:flex-row gap-4 p-4 border border-transparent hover:border-tn-bg-highlight hover:bg-tn-bg-highlight transition-all cursor-pointer"
+                                  className="group flex flex-col sm:flex-row gap-4 p-4 border border-white/10 hover:border-tn-bg-highlight hover:bg-tn-bg-highlight transition-all cursor-pointer rounded-sm"
                                 >
                                     <div className="sm:w-32 flex-shrink-0 font-mono text-xs text-tn-comment pt-1">
                                         {post.date}

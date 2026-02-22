@@ -16,7 +16,7 @@ export default async function WritingPostPage({ params }: { params: Promise<{ sl
     const post = await getWritingBySlug(slug);
 
     return (
-        <div className="max-w-3xl mx-auto px-6 py-12">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
             <Link
                 href="/writing"
                 className="inline-flex items-center gap-2 mb-8 font-mono text-xs uppercase tracking-wider text-fg-muted hover:text-accent transition-colors"

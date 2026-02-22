@@ -171,7 +171,7 @@ const skills = [
 
 export default function ResumePage() {
     return (
-        <div className="max-w-[860px] mx-auto px-8 pt-14 pb-24">
+        <div className="max-w-[860px] mx-auto px-4 sm:px-8 pt-8 sm:pt-14 pb-16 sm:pb-24">
             {/* Page Header */}
             <div className="flex justify-between items-end pb-8 border-b-2 border-fg max-md:flex-col max-md:items-start max-md:gap-4">
                 <div>
@@ -230,7 +230,7 @@ export default function ResumePage() {
                                                     href={`https://${project.link}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="font-mono text-[0.6rem] font-light tracking-[0.06em] text-accent no-underline inline-flex items-center gap-1.5 hover:underline"
+                                                    className="font-mono text-[0.6rem] font-light tracking-[0.06em] text-accent no-underline inline-flex items-center gap-1.5 hover:underline break-all"
                                                 >
                                                     <GitHubIcon />
                                                     {project.link} &rarr;
@@ -241,7 +241,7 @@ export default function ResumePage() {
                                                     href={`https://${project.hfLink}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="font-mono text-[0.6rem] font-light tracking-[0.06em] text-accent no-underline inline-flex items-center gap-1.5 hover:underline"
+                                                    className="font-mono text-[0.6rem] font-light tracking-[0.06em] text-accent no-underline inline-flex items-center gap-1.5 hover:underline break-all"
                                                 >
                                                     <HuggingFaceIcon />
                                                     {project.hfLink} &rarr;

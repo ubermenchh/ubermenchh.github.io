@@ -21,7 +21,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     const post = await getPostBySlug(slug);
 
     return (
-        <div className="max-w-3xl mx-auto px-6 py-12">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
             <Link
                 href="/blog"
                 className="inline-flex items-center gap-2 mb-8 font-mono text-xs uppercase tracking-wider text-fg-muted hover:text-accent transition-colors"
@@ -34,10 +34,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     <h1 className="font-serif text-3xl md:text-4xl font-semibold text-fg mb-3">
                         {post.title}
                     </h1>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                         <span className="font-mono text-xs text-fg-faint">{post.date}</span>
                         {post.tags && post.tags.length > 0 && (
-                            <div className="flex gap-2">
+                            <div className="flex flex-wrap gap-2">
                                 {post.tags.map((tag: string) => (
                                     <span
                                         key={tag}

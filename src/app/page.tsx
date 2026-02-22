@@ -24,9 +24,9 @@ export default function Home() {
     const recentPosts = getSortedPosts().slice(0, 5);
 
     return (
-        <div className="max-w-3xl mx-auto px-6 py-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
             {/* Profile Header */}
-            <section className="flex items-start gap-6 mb-12">
+            <section className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-12">
                 <div className="w-20 h-20 border border-border shrink-0 relative overflow-hidden">
                     <Image
                         src="/guts.jpg"
@@ -37,7 +37,7 @@ export default function Home() {
                     />
                 </div>
                 <div>
-                    <h1 className="font-serif text-3xl font-semibold text-fg">Compiler Durden / Umang Kaushik</h1>
+                    <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-fg">Compiler Durden / Umang Kaushik</h1>
                     <p className="font-mono text-xs text-fg-muted mt-1">
                         ubermenchh &middot; nerd
                     </p>

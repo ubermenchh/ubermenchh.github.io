@@ -92,7 +92,12 @@ body {
   @apply text-accent hover:text-link-hover underline underline-offset-2 transition-colors;
 }
 
-.katex {
-  color: #2c2c2c;
-  font-size: 1.05em;
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+}
+
+.prose img {
+  @apply max-w-full h-auto;
 }

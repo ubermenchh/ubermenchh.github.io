@@ -14,14 +14,14 @@ export default function Navigation() {
     ];
 
     return (
-        <nav className="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
+        <nav className="max-w-3xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
             <Link
                 href="/"
                 className="font-mono text-xs uppercase tracking-[0.2em] text-fg hover:text-accent transition-colors"
             >
                 ubermenchh
             </Link>
-            <div className="flex gap-8">
+            <div className="flex gap-3 sm:gap-8 flex-wrap">
                 {links.map((link) => (
                     <Link
                         key={link.path}

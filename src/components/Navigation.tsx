@@ -6,37 +6,35 @@ import { usePathname } from "next/navigation";
 export default function Navigation() {
     const pathname = usePathname();
 
-    const tabs = [
+    const links = [
         { name: "Home", path: "/" },
-        { name: "Blog", path: "/blog"},
-        { name: "Resume", path: "/resume" }
+        { name: "Blog", path: "/blog" },
+        { name: "Writing", path: "/writing" },
+        { name: "Resume", path: "/resume" },
     ];
 
     return (
-        <nav className="bg-transparent py-4">
-            <div className="max-w-5xl mx-auto">
-                <div className="flex gap-4">
-                    {tabs.map((tab) => {
-                        const isActive = pathname === tab.path;
-
-                        return (
-                            <Link
-                                key={tab.path}
-                                href={tab.path}
-                                className={`
-                                    flex-1 py-4 text-center font-mono text-sm uppercase tracking-widest transition-all duration-300 border border-tn-blue
-                                    ${
-                                        isActive
-                                            ? "bg-tn-fg text-tn-bg font-bold shadow-[0_0_15px_rgba(192,202,245,0.3)]"
-                                            : "bg-transparent text-tn-fg-dark hover:bg-tn-bg-highlight hover:text-white"
-                                    }    
-                                `}
-                            >
-                                {tab.name}
-                            </Link>
-                        )
-                    })}
-                </div>
+        <nav className="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
+            <Link
+                href="/"
+                className="font-mono text-xs uppercase tracking-[0.2em] text-fg hover:text-accent transition-colors"
+            >
+                ubermenchh
+            </Link>
+            <div className="flex gap-8">
+                {links.map((link) => (
+                    <Link
+                        key={link.path}
+                        href={link.path}
+                        className={`font-mono text-xs uppercase tracking-[0.15em] transition-colors pb-0.5 ${
+                            pathname === link.path
+                                ? "text-fg border-b border-fg"
+                                : "text-fg-muted hover:text-fg"
+                        }`}
+                    >
+                        {link.name}
+                    </Link>
+                ))}
             </div>
         </nav>
     );

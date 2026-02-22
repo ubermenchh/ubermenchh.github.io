@@ -1,66 +1,49 @@
 @import "tailwindcss";
+@import "highlight.js/styles/github.css";
 
 @theme inline {
-  /* Tokyo Night Theme Colors */
-  --color-tn-bg: #1a1b26;
-  --color-tn-bg-dark: #16161e;
-  --color-tn-bg-highlight: #24283b;
-  --color-tn-terminal-black: #414868;
-  --color-tn-fg: #c0caf5;
-  --color-tn-fg-dark: #a9b1d6;
-  --color-tn-fg-gutter: #3b4261;
-  --color-tn-dark3: #545c7e;
-  --color-tn-comment: #565f89;
-  --color-tn-dark5: #737aa2;
-  --color-tn-blue0: #3d59a1;
-  --color-tn-blue: #7aa2f7;
-  --color-tn-cyan: #7dcfff;
-  --color-tn-blue1: #2ac3de;
-  --color-tn-blue2: #0db9d7;
-  --color-tn-blue5: #89ddff;
-  --color-tn-blue6: #b4f9f8;
-  --color-tn-blue7: #394b70;
-  --color-tn-magenta: #bb9af7;
-  --color-tn-magenta2: #ff007c;
-  --color-tn-purple: #9d7cd8;
-  --color-tn-orange: #ff9e64;
-  --color-tn-yellow: #e0af68;
-  --color-tn-green: #9ece6a;
-  --color-tn-green1: #73daca;
-  --color-tn-green2: #41a6b5;
-  --color-tn-teal: #1abc9c;
-  --color-tn-red: #f7768e;
-  --color-tn-red1: #db4b4b;
-  
+  --color-bg: #f5f0ea;
+  --color-bg-card: #ffffff;
+  --color-fg: #2c2c2c;
+  --color-fg-muted: #8a8578;
+  --color-fg-faint: #b5ad9e;
+  --color-accent: #7a6652;
+  --color-border: #d4cdc2;
+  --color-border-light: #e8e2d9;
+  --color-link: #7a6652;
+  --color-link-hover: #5c4a3a;
+
+  --font-serif: var(--font-eb-garamond);
   --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
-  background: #16161e;
-  color: #c0caf5;
-  font-family: var(--font-jetbrains-mono), monospace;
+  background: #f5f0ea;
+  color: #2c2c2c;
+  font-family: var(--font-eb-garamond), Georgia, serif;
 }
 
 *::selection {
-  background: #3d59a1 !important;
-  color: #c0caf5 !important;
+  background: #7a6652 !important;
+  color: #f5f0ea !important;
 }
 
 *::-moz-selection {
-  background: #3d59a1 !important;
-  color: #c0caf5 !important;
+  background: #7a6652 !important;
+  color: #f5f0ea !important;
 }
 
 .prose {
-  @apply text-tn-fg;
+  @apply text-fg;
 }
 
 .prose h1, .prose h2, .prose h3 {
-  @apply font-bold mt-8 mb-4 text-tn-blue;
+  @apply font-bold mt-8 mb-4 text-fg;
+  font-family: var(--font-eb-garamond), Georgia, serif;
 }
 
 .prose p {
-  @apply mb-4;
+  @apply mb-4 leading-relaxed;
 }
 
 .prose ul {
@@ -76,7 +59,7 @@ body {
 }
 
 .prose strong {
-  @apply font-bold text-tn-orange;
+  @apply font-bold text-fg;
 }
 
 .prose em {
@@ -84,13 +67,26 @@ body {
 }
 
 .prose code {
-  @apply bg-tn-bg-highlight px-1.5 py-0.5 rounded text-sm text-tn-cyan;
+  @apply bg-border-light px-1.5 py-0.5 rounded text-sm;
+  font-family: var(--font-jetbrains-mono), monospace;
+  color: #4a4540;
 }
 
 .prose pre {
-  @apply bg-tn-bg-dark p-4 rounded overflow-x-auto mb-4 border border-tn-terminal-black;
+  @apply p-4 rounded overflow-x-auto mb-4 border border-border;
+  background: #ece7de;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 rounded-none text-sm;
+  color: #4a4540;
 }
 
 .prose a {
-  @apply text-tn-blue hover:text-tn-cyan hover:underline transition-colors;
+  @apply text-accent hover:text-link-hover underline underline-offset-2 transition-colors;
+}
+
+.katex {
+  color: #2c2c2c;
+  font-size: 1.05em;
 }

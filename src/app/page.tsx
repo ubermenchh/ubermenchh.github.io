@@ -1,94 +1,163 @@
+import { getSortedPosts } from "@/lib/posts";
+import Link from "next/link";
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faXTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import ContentBox from "@/components/ContentBox";
-import SolarSystem from "@/components/SolarSystem";
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+    return (
+        <div className="flex items-center gap-4 mb-8">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-fg-muted shrink-0">
+                {children}
+            </span>
+            <div className="h-px bg-border flex-1" />
+        </div>
+    );
+}
+
+const interests = [
+    { label: "Systems", description: "Compilers, CUDA, parallel computation, low-level architecture." },
+    { label: "ML Research", description: "Interpretability, RL, efficient training, small models." },
+    { label: "Philosophy", description: "Dead thinkers, phenomenology, philosophy of mind, Nietzsche." },
+    { label: "History", description: "Intellectual history, science history, how ideas spread and die." },
+];
 
 export default function Home() {
+    const recentPosts = getSortedPosts().slice(0, 5);
+
     return (
-        <div className="px-8 pb-8 pt-0">
-            <div className="max-w-5xl mx-auto py-4">
-                <section className="mb-8 p-6 md:p-8 border border-tn-blue bg-tn-bg flex flex-col md:flex-row items-center md:items-start gap-6 relative group overflow-hidden">
-                    {/* Avatar Block */}
-                    <div className="relative">
-                        <div className="w-24 h-24 md:w-28 md:h-28 bg-tn-bg border border-tn-blue flex items-center justify-center overflow-hidden relative">
-                            <Image 
-                                src="/guts.jpg"
-                                alt="Compiler Durden"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                            <div className="absolute inset-0 bg-tn-blue opacity-0 group-hover:opacity-10 transition-opacity mix-blend-overlay"></div>
-                        </div>
-                        <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-tn-blue"></div>
-                        <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-tn-blue"></div>
-                    </div>
-
-                    <div className="flex-1 text-center md:text-left space-y-3">
-                        <div>
-                            <h1 className="text-2xl md:text-3xl font-bold text-tn-fg tracking-tight">Compiler Durden / ubermenchh</h1>
-                            <p className="font-mono text-sm text-tn-purple mt-1">Nerd</p>
-                        </div>
-
-                        <div className="flex justify-center md:justify-start space-x-4 pt-1">
-                            <a
-                                href="https://github.com/ubermenchh"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-tn-fg-dark hover:text-tn-blue transition-colors transform"
-                                aria-label="Github"
-                            >
-                                <FontAwesomeIcon icon={faGithub} className="w-[18px] h-[18px]" />
-                            </a>
-                            <a
-                                href="https://x.com/ubermenchh_"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-tn-fg-dark hover:text-tn-blue transition-colors transform"
-                                aria-label="X"
-                            >
-                                <FontAwesomeIcon icon={faXTwitter} className="w-[18px] h-[18px]" />
-                            </a>
-                            <a
-                                href="mailto:ubermenchh69@gmail.com"
-                                className="text-tn-fg-dark hover:text-tn-blue transition-colors transform"
-                                aria-label="Email"
-                            >
-                                <FontAwesomeIcon icon={faEnvelope} className="w-[18px] h-[18px]" />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="absolute top-4 right-6 font-mono text-xs text-tn-bg-highlight select-none pointer-events-none">ID: 0x241002</div>
-                </section>
-
-                {/* About Me Section */}
-                <ContentBox title="~/user/home">
-                    <div className="prose prose-zinc dark:prose-invert max-w-none">
-                        <p className="text-lg text-tn-fg-dark mb-4">
-                            Hey, I&apos;m <span className="text-white font-bold">Compiler Durden</span> (ubermenchh), a serial nerd obsessed about low-level
-                            and parallel systems. I work on <span className="text-tn-green1">AI Agents</span> during the day and <span className="text-tn-magenta">CUDA kernels</span> and
-                            <span className="text-tn-magenta"> Model Training</span> during the night.
-                        </p>
-                        <p className="text-lg text-tn-fg-dark mb-4">
-                            Currently breaking and learning CUDA kernels, Deep RL environments and interpretability
-                            research. I want to make the smallest intelligent model possible.
-                        </p>
-                        <p className="text-lg text-tn-fg-dark mb-4">
-                            My brain&apos;s browser has 47 tabs open across four different centuries and three levels of abstraction.
-                            I collect intellectual hobbies like a crow hoards shiny things: compilers, dead philosophers, 
-                            the psyche and history.
-                        </p>
-                    </div>
-                </ContentBox>
-
-                <div className="mt-8">
-                    <ContentBox title="~/system/solar">
-                        <SolarSystem />
-                    </ContentBox>
+        <div className="max-w-3xl mx-auto px-6 py-8">
+            {/* Profile Header */}
+            <section className="flex items-start gap-6 mb-12">
+                <div className="w-20 h-20 border border-border shrink-0 relative overflow-hidden">
+                    <Image
+                        src="/guts.jpg"
+                        alt="Compiler Durden"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
                 </div>
-            </div>
+                <div>
+                    <h1 className="font-serif text-3xl font-semibold text-fg">Compiler Durden / Umang Kaushik</h1>
+                    <p className="font-mono text-xs text-fg-muted mt-1">
+                        ubermenchh &middot; nerd
+                    </p>
+                    <p className="font-serif text-base italic text-fg-muted mt-3">
+                        Serial obsessive at the intersection of low-level systems and machine intelligence.
+                    </p>
+                    <div className="flex gap-4 mt-4">
+                        <a
+                            href="https://github.com/ubermenchh"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-xs uppercase tracking-wider text-fg-muted hover:text-accent transition-colors"
+                        >
+                            Github
+                        </a>
+                        <a
+                            href="https://x.com/ubermenchh_"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-xs uppercase tracking-wider text-fg-muted hover:text-accent transition-colors"
+                        >
+                            X
+                        </a>
+                        <a
+                            href="mailto:ubermenchh69@gmail.com"
+                            className="font-mono text-xs uppercase tracking-wider text-fg-muted hover:text-accent transition-colors"
+                        >
+                            Email
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            {/* About */}
+            <section className="mb-14">
+                <SectionLabel>About</SectionLabel>
+                <div className="font-serif text-lg leading-relaxed text-fg space-y-4">
+                    <p>
+                        I work on{" "}
+                        <a href="https://github.com/ubermenchh" className="text-accent underline underline-offset-2 hover:text-link-hover transition-colors">
+                            AI agents
+                        </a>{" "}
+                        during the day and{" "}
+                        <a href="https://github.com/ubermenchh" className="text-accent underline underline-offset-2 hover:text-link-hover transition-colors">
+                            CUDA kernels
+                        </a>{" "}
+                        and model training during the night. Currently breaking and learning CUDA kernels,
+                        deep RL environments, and interpretability research. The goal: make the smallest
+                        intelligent model possible.
+                    </p>
+                    <p>
+                        My brain runs 47 tabs across four centuries and three levels of abstraction.
+                        I collect intellectual hobbies like a crow hoards shiny things &mdash; compilers,
+                        dead philosophers, the psyche, and history.
+                    </p>
+                </div>
+            </section>
+
+            {/* Now */}
+            <section className="mb-14">
+                <SectionLabel>Now</SectionLabel>
+                <ul className="space-y-3 font-serif text-lg text-fg list-disc pl-5">
+                    <li>Writing custom CUDA kernels for sparse attention mechanisms.</li>
+                    <li>Building deep RL environments from scratch to understand sample efficiency.</li>
+                    <li>Reading mechanistic interpretability papers; trying to see inside the black box.</li>
+                    <li>Working toward the smallest model that can be meaningfully called intelligent.</li>
+                </ul>
+            </section>
+
+            {/* Interests */}
+            <section className="mb-14">
+                <SectionLabel>Interests</SectionLabel>
+                <div className="grid grid-cols-1 sm:grid-cols-2 border border-border">
+                    {interests.map((interest, i) => (
+                        <div
+                            key={interest.label}
+                            className={`p-5 ${
+                                i < interests.length - 2 ? "border-b border-border" : ""
+                            } ${i % 2 === 0 ? "sm:border-r sm:border-border" : ""}`}
+                        >
+                            <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent font-semibold mb-2">
+                                {interest.label}
+                            </h3>
+                            <p className="font-serif text-base text-fg-muted">
+                                {interest.description}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Recent Writing */}
+            <section className="mb-14">
+                <SectionLabel>Recent Writing</SectionLabel>
+                <ul>
+                    {recentPosts.map((post) => (
+                        <li key={post.slug} className="border-b border-border-light">
+                            <Link
+                                href={`/blog/${post.slug}`}
+                                className="group flex items-baseline justify-between gap-4 py-4"
+                            >
+                                <span className="font-serif text-lg text-fg group-hover:text-accent transition-colors">
+                                    {post.title}
+                                </span>
+                                <span className="font-mono text-xs text-fg-faint shrink-0">
+                                    {post.date?.substring(0, 7)}
+                                </span>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+
+            {/* Footer */}
+            <footer className="text-center py-8">
+                <p className="font-mono text-xs text-fg-faint">
+                    Compiler Durden &middot; ubermenchh &middot; updated{" "}
+                    {new Date().toISOString().split("T")[0]}
+                </p>
+            </footer>
         </div>
     );
 }

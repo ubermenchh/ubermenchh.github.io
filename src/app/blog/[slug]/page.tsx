@@ -1,66 +1,61 @@
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import ContentBox from "@/components/ContentBox";
 
 export async function generateStaticParams() {
     const posts = getAllPostSlugs();
     return posts;
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }>}) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const post  = await getPostBySlug(slug);
+    const post = await getPostBySlug(slug);
 
     return {
         title: post.title,
-        description: post.description
-    }
+        description: post.description,
+    };
 }
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }>}) {
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-
     const post = await getPostBySlug(slug);
 
     return (
-        <div className="p-8">
-            <div className="max-w-5xl mx-auto">
+        <div className="max-w-3xl mx-auto px-6 py-12">
+            <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 mb-8 font-mono text-xs uppercase tracking-wider text-fg-muted hover:text-accent transition-colors"
+            >
+                &larr; Back to writing
+            </Link>
 
-                { /* Back Button */}
-                <Link
-                    href="/blog"
-                    className="inline-flex items-center gap-2 mb-8 text-tn-fg-dark hover:text-tn-cyan transition-colors"
-                >
-                    <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4" />
-                    Back to blog
-                </Link>
+            <article>
+                <header className="mb-10">
+                    <h1 className="font-serif text-3xl md:text-4xl font-semibold text-fg mb-3">
+                        {post.title}
+                    </h1>
+                    <div className="flex items-center gap-3">
+                        <span className="font-mono text-xs text-fg-faint">{post.date}</span>
+                        {post.tags && post.tags.length > 0 && (
+                            <div className="flex gap-2">
+                                {post.tags.map((tag: string) => (
+                                    <span
+                                        key={tag}
+                                        className="font-mono text-[10px] uppercase tracking-wider text-fg-muted border border-border px-2 py-0.5"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </header>
 
-                <ContentBox title={`~/user/blog/${slug}`}>
-                    <article>
-                        {/* Post Title */}
-                        <h1 className="text-4xl md:text-5xl font-bold text-tn-fg mb-8">
-                            {post.title}
-                        </h1>
-
-                        {/* Post Content */}
-                        <div
-                            className="prose prose-zinc dark:prose-invert max-w-none
-                                prose-headings:font-bold 
-                                prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
-                                prose-a:text-tn-blue hover:prose-a:text-tn-cyan
-                                prose-code:text-tn-cyan
-                                prose-code:bg-tn-bg-highlight prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-                                prose-pre:bg-tn-bg-dark prose-pre:border prose-pre:border-tn-terminal-black
-                                prose-strong:text-tn-orange
-                                prose-ul:list-disc prose-ol:list-decimal
-                            "
-                            dangerouslySetInnerHTML={{ __html: post.content || '' }}
-                        />
-                    </article>
-                </ContentBox>
-            </div>
+                <div
+                    className="prose max-w-none font-serif text-lg leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: post.content || "" }}
+                />
+            </article>
         </div>
-    )
+    );
 }

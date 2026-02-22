@@ -2,7 +2,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import html from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 const postsDir = path.join(process.cwd(), "posts");
 
@@ -60,7 +64,11 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
     // Convert markdown to HTML
     const processedContent = await remark()
-        .use(html)
+        .use(remarkMath)
+        .use(remarkRehype)
+        .use(rehypeKatex)
+        .use(rehypeHighlight)
+        .use(rehypeStringify)
         .process(matterResult.content);
     const contentHtml = processedContent.toString();
 

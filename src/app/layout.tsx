@@ -18,8 +18,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Compiler Durden",
-  description: "My nerd house",
+    title: {
+        default: "Compiler Durden",
+        template: "%s | Compiler Durden",
+    },
+    description: "Serial obsessive at the intersection of low-level systems and machine intelligence.",
 };
 
 export default function RootLayout({
@@ -30,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ebGaramond.variable} ${jetbrainsMono.variable} antialiased bg-tn-bg-dark min-h-screen relative`}
+        className={`${ebGaramond.variable} ${jetbrainsMono.variable} antialiased bg-bg min-h-screen`}
         suppressHydrationWarning
       >
         <div className="relative z-10">

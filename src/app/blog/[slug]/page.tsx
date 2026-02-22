@@ -26,7 +26,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 href="/blog"
                 className="inline-flex items-center gap-2 mb-8 font-mono text-xs uppercase tracking-wider text-fg-muted hover:text-accent transition-colors"
             >
-                &larr; Back to writing
+                &larr; Back to blog
             </Link>
 
             <article>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ResumeContact from "@/components/ResumeContact";
 
 export const metadata: Metadata = {
     title: "Resume",
@@ -181,25 +182,7 @@ export default function ResumePage() {
                         AI Engineer &middot; ML Researcher
                     </p>
                 </div>
-                <div className="text-right flex flex-col gap-1 items-end max-md:items-start max-md:text-left">
-                    <span className="font-mono text-[0.62rem] font-light tracking-[0.06em] text-fg-faint">
-                        <a href="mailto:umangkaushik2002@gmail.com" className="text-accent hover:underline">ubermenchh69@gmail.com</a>
-                    </span>
-                    <span className="font-mono text-[0.62rem] font-light tracking-[0.06em] text-fg-faint">
-                        <a href="https://github.com/ubermenchh" className="text-accent hover:underline">github.com/ubermenchh</a>
-                    </span>
-                    <span className="font-mono text-[0.62rem] font-light tracking-[0.06em] text-fg-faint">
-                        <a href="https://x.com/ubermenchh_" className="text-accent hover:underline">x.com/ubermenchh_</a>
-                    </span>
-                    <a
-                        href="https://drive.google.com/file/d/1g0kzBsJytBm1kHZgut245uoFuFFCxwy_/view?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono text-[0.6rem] font-light tracking-[0.1em] uppercase text-fg-faint border border-border px-2.5 py-1 mt-1 hover:text-accent hover:border-accent transition-colors"
-                    >
-                        &darr; Download PDF
-                    </a>
-                </div>
+                <ResumeContact />
             </div>
 
             {/* Resume Body */}
@@ -242,15 +225,17 @@ export default function ResumePage() {
                                         {project.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
                                     </div>
                                         <div className="flex flex-col items-start gap-1 mt-2">
-                                            <a
-                                                href={`https://${project.link}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="font-mono text-[0.6rem] font-light tracking-[0.06em] text-accent no-underline inline-flex items-center gap-1.5 hover:underline"
-                                            >
-                                                <GitHubIcon />
-                                                {project.link} &rarr;
-                                            </a>
+                                            {project.link && (
+                                                <a
+                                                    href={`https://${project.link}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="font-mono text-[0.6rem] font-light tracking-[0.06em] text-accent no-underline inline-flex items-center gap-1.5 hover:underline"
+                                                >
+                                                    <GitHubIcon />
+                                                    {project.link} &rarr;
+                                                </a>
+                                            )}
                                             {project.hfLink && (
                                                 <a
                                                     href={`https://${project.hfLink}`}

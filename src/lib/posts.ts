@@ -93,3 +93,53 @@ export function getAllPostSlugs() {
 
     return slugs;
 }
+
+const writingsDir = path.join(process.cwd(), "writings");
+
+export function getSortedWritings() {
+    const fileNames = fs.readdirSync(writingsDir);
+    const allWritings = fileNames
+        .filter((fileName) => fileName.endsWith(".md"))
+        .map((fileName) => {
+            const slug = fileName.replace(/\.md$/, "");
+            const fullPath = path.join(writingsDir, fileName);
+            const fileContents = fs.readFileSync(fullPath, "utf8");
+            const matterResult = matter(fileContents);
+            return {
+                slug,
+                title: matterResult.data.title,
+                date: matterResult.data.date,
+                description: matterResult.data.description,
+                tags: matterResult.data.tags || [],
+            };
+        });
+    return allWritings.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export async function getWritingBySlug(slug: string): Promise<Post> {
+    const fullPath = path.join(writingsDir, `${slug}.md`);
+    const fileContents = fs.readFileSync(fullPath, "utf-8");
+    const matterResult = matter(fileContents);
+    const processedContent = await remark()
+        .use(remarkMath)
+        .use(remarkRehype)
+        .use(rehypeKatex)
+        .use(rehypeHighlight)
+        .use(rehypeStringify)
+        .process(matterResult.content);
+    return {
+        slug,
+        title: matterResult.data.title,
+        date: matterResult.data.date,
+        description: matterResult.data.description,
+        tags: matterResult.data.tags || [],
+        content: processedContent.toString(),
+    };
+}
+
+export function getAllWritingSlugs() {
+    const fileNames = fs.readdirSync(writingsDir);
+    return fileNames
+        .filter((fileName) => fileName.endsWith(".md"))
+        .map((fileName) => ({ slug: fileName.replace(/\.md$/, "") }));
+}

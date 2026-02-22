@@ -1,5 +1,10 @@
 import { getSortedPosts } from "@/lib/posts";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Blog",
+};
 
 export default function BlogPage() {
     const posts = getSortedPosts();

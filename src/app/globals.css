@@ -5,13 +5,19 @@
   --color-bg: #f5f0ea;
   --color-bg-card: #ffffff;
   --color-fg: #2c2c2c;
-  --color-fg-muted: #8a8578;
-  --color-fg-faint: #b5ad9e;
+  --color-fg-muted: #6b6358;
+  --color-fg-faint: #968e82;
   --color-accent: #7a6652;
   --color-border: #d4cdc2;
   --color-border-light: #e8e2d9;
   --color-link: #7a6652;
   --color-link-hover: #5c4a3a;
+  --color-accent-blue: #2b4a7a;
+  --color-accent-warm: #7a3b1e;
+  --color-tag-blue-bg: #f0f4f9;
+  --color-tag-blue-border: #c4d0e0;
+  --color-tag-warm-bg: #f9f4f0;
+  --color-tag-warm-border: #e0cfc4;
 
   --font-serif: var(--font-eb-garamond);
   --font-mono: var(--font-jetbrains-mono);

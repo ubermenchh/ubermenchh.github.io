@@ -1,6 +1,7 @@
 import { getSortedWritings } from "@/lib/posts";
 import Link from "next/link";
 import type { Metadata } from "next";
+import GlitchText from "@/components/GlitchText";
 
 export const metadata: Metadata = {
     title: "Writing",
@@ -11,7 +12,7 @@ export default function WritingPage() {
 
     return (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-            <h1 className="font-serif text-3xl font-semibold text-fg mb-10">Writing</h1>
+            <h1 className="font-serif text-3xl font-semibold text-fg mb-10"><GlitchText>Writing</GlitchText></h1>
             {writings.length > 0 ? (
                 <ul>
                     {writings.map((post) => (
@@ -22,7 +23,7 @@ export default function WritingPage() {
                             >
                                 <div className="flex-1">
                                     <span className="font-serif text-lg text-fg group-hover:text-accent transition-colors">
-                                        {post.title}
+                                        <GlitchText>{post.title}</GlitchText>
                                     </span>
                                     {post.description && (
                                         <p className="font-serif text-sm text-fg-muted mt-1">{post.description}</p>

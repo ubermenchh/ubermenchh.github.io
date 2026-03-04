@@ -1,12 +1,13 @@
 import { getSortedPosts } from "@/lib/posts";
 import Link from "next/link";
 import Image from "next/image";
+import GlitchText from "@/components/GlitchText";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex items-center gap-4 mb-8">
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-fg-muted shrink-0">
-                {children}
+                <GlitchText>{children}</GlitchText>
             </span>
             <div className="h-px bg-border flex-1" />
         </div>
@@ -37,7 +38,7 @@ export default function Home() {
                     />
                 </div>
                 <div>
-                    <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-fg">Compiler Durden / Umang Kaushik</h1>
+                    <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-fg"><GlitchText>Compiler Durden / Umang Kaushik</GlitchText></h1>
                     <p className="font-mono text-xs text-fg-muted mt-1">
                         ubermenchh &middot; nerd
                     </p>
@@ -119,7 +120,7 @@ export default function Home() {
                             } ${i % 2 === 0 ? "sm:border-r sm:border-border" : ""}`}
                         >
                             <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent font-semibold mb-2">
-                                {interest.label}
+                                <GlitchText>{interest.label}</GlitchText>
                             </h3>
                             <p className="font-serif text-base text-fg-muted">
                                 {interest.description}
@@ -140,7 +141,7 @@ export default function Home() {
                                 className="group flex items-baseline justify-between gap-4 py-4"
                             >
                                 <span className="font-serif text-lg text-fg group-hover:text-accent transition-colors">
-                                    {post.title}
+                                    <GlitchText>{post.title}</GlitchText>
                                 </span>
                                 <span className="font-mono text-xs text-fg-faint shrink-0">
                                     {post.date?.substring(0, 7)}

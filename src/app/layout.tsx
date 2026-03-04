@@ -3,6 +3,7 @@ import { JetBrains_Mono, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import Navigation from "@/components/Navigation";
+import ThemeProvider from "@/components/ThemeProvider";
 
 const ebGaramond = EB_Garamond({
     variable: "--font-eb-garamond",
@@ -26,23 +27,18 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${ebGaramond.variable} ${jetbrainsMono.variable} antialiased bg-bg min-h-screen`}
-        suppressHydrationWarning
-      >
-        <div className="relative z-10">
-            <Navigation />
-            <main>
-                {children}
-            </main>
-        </div>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en" suppressHydrationWarning>
+            <body className={`${ebGaramond.variable} ${jetbrainsMono.variable} antialiased bg-bg min-h-screen`}>
+                <ThemeProvider>
+                    <Navigation />
+                    <main>{children}</main>
+                </ThemeProvider>
+            </body>
+        </html>
+    );
 }

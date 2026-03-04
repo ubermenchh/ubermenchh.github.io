@@ -1,6 +1,7 @@
 import { getSortedPosts } from "@/lib/posts";
 import Link from "next/link";
 import type { Metadata } from "next";
+import GlitchText from "@/components/GlitchText";
 
 export const metadata: Metadata = {
     title: "Blog",
@@ -11,7 +12,7 @@ export default function BlogPage() {
 
     return (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-            <h1 className="font-serif text-3xl font-semibold text-fg mb-10">Blog</h1>
+            <h1 className="font-serif text-3xl font-semibold text-fg mb-10"><GlitchText>Blog</GlitchText></h1>
 
             {posts.length > 0 ? (
                 <ul>
@@ -23,7 +24,7 @@ export default function BlogPage() {
                             >
                                 <div className="flex-1">
                                     <span className="font-serif text-lg text-fg group-hover:text-accent transition-colors">
-                                        {post.title}
+                                        <GlitchText>{post.title}</GlitchText>
                                     </span>
                                     {post.description && (
                                         <p className="font-serif text-sm text-fg-muted mt-1">
@@ -35,7 +36,7 @@ export default function BlogPage() {
                                             {post.tags.map((tag: string) => (
                                                 <span
                                                     key={tag}
-                                                    className="font-mono text-[10px] uppercase tracking-wider text-fg-muted border border-border px-2 py-0.5"
+                                                    className="font-mono text-[10px] uppercase tracking-wider text-accent-warm border border-tag-warm-border bg-tag-warm-bg px-2 py-0.5"
                                                 >
                                                     {tag}
                                                 </span>

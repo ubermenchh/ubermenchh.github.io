@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ResumeContact from "@/components/ResumeContact";
+import GlitchText from "@/components/GlitchText";
 
 export const metadata: Metadata = {
     title: "Resume",
@@ -176,7 +177,7 @@ export default function ResumePage() {
             <div className="flex justify-between items-end pb-8 border-b-2 border-fg max-md:flex-col max-md:items-start max-md:gap-4">
                 <div>
                     <h1 className="font-serif text-[2rem] font-medium tracking-tight leading-tight mb-1">
-                        Umang Kaushik
+                        <GlitchText>Umang Kaushik</GlitchText>
                     </h1>
                     <p className="font-serif text-[0.95rem] italic text-fg-muted">
                         AI Engineer &middot; ML Researcher
@@ -199,7 +200,7 @@ export default function ResumePage() {
                                     <span className="block border-t border-border pt-0.5 mt-0.5">{entry.dateStart}</span>
                                 </div>
                                 <div>
-                                    <div className="font-serif text-base font-medium text-fg leading-snug mb-0.5">{entry.title}</div>
+                                    <div className="font-serif text-base font-medium text-fg leading-snug mb-0.5"><GlitchText>{entry.title}</GlitchText></div>
                                     <div className="font-serif text-[0.85rem] italic text-fg-muted mb-2">{entry.org}</div>
                                     <p className="font-serif text-[0.88rem] text-fg-muted leading-relaxed mb-2">{entry.desc}</p>
                                     <div className="flex flex-wrap gap-1.5 mt-2">
@@ -219,7 +220,7 @@ export default function ResumePage() {
                             <div key={i} className={`grid grid-cols-[110px_1fr] gap-x-5 max-md:grid-cols-[80px_1fr] max-md:gap-x-3 ${i < projects.length - 1 ? "mb-6 pb-6 border-b border-dashed border-border" : ""}`}>
                                 <div className="font-mono text-[0.62rem] font-light text-fg-faint pt-[3px] text-right">{project.year}</div>
                                 <div>
-                                    <div className="font-serif text-base font-medium text-fg leading-snug mb-0.5">{project.title}</div>
+                                    <div className="font-serif text-base font-medium text-fg leading-snug mb-0.5"><GlitchText>{project.title}</GlitchText></div>
                                     <p className="font-serif text-[0.88rem] text-fg-muted leading-relaxed mb-2">{project.desc}</p>
                                     <div className="flex flex-wrap gap-1.5 mt-2">
                                         {project.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}

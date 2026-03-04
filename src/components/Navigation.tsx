@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle";
+import GlitchText from "@/components/GlitchText";
 
 export default function Navigation() {
     const pathname = usePathname();
@@ -19,9 +21,9 @@ export default function Navigation() {
                 href="/"
                 className="font-mono text-xs uppercase tracking-[0.2em] text-fg hover:text-accent transition-colors"
             >
-                ubermenchh
+                <GlitchText>ubermenchh</GlitchText>
             </Link>
-            <div className="flex gap-3 sm:gap-8 flex-wrap">
+            <div className="flex items-center gap-3 sm:gap-8">
                 {links.map((link) => (
                     <Link
                         key={link.path}
@@ -32,9 +34,10 @@ export default function Navigation() {
                                 : "text-fg-muted hover:text-fg"
                         }`}
                     >
-                        {link.name}
+                        <GlitchText>{link.name}</GlitchText>
                     </Link>
                 ))}
+                <ThemeToggle />
             </div>
         </nav>
     );

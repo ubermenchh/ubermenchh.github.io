@@ -1,5 +1,6 @@
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import Link from "next/link";
+import GlitchText from "@/components/GlitchText";
 
 export async function generateStaticParams() {
     const posts = getAllPostSlugs();
@@ -32,7 +33,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <article>
                 <header className="mb-10">
                     <h1 className="font-serif text-3xl md:text-4xl font-semibold text-fg mb-3">
-                        {post.title}
+                        <GlitchText>{post.title}</GlitchText>
                     </h1>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                         <span className="font-mono text-xs text-fg-faint">{post.date}</span>
@@ -41,7 +42,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                                 {post.tags.map((tag: string) => (
                                     <span
                                         key={tag}
-                                        className="font-mono text-[10px] uppercase tracking-wider text-fg-muted border border-border px-2 py-0.5"
+                                        className="font-mono text-[10px] uppercase tracking-wider text-accent-warm border border-tag-warm-border bg-tag-warm-bg px-2 py-0.5"
                                     >
                                         {tag}
                                     </span>

@@ -1,5 +1,6 @@
 import { getWritingBySlug, getAllWritingSlugs } from "@/lib/posts";
 import Link from "next/link";
+import GlitchText from "@/components/GlitchText";
 
 export async function generateStaticParams() {
     return getAllWritingSlugs();
@@ -25,7 +26,7 @@ export default async function WritingPostPage({ params }: { params: Promise<{ sl
             </Link>
             <article>
                 <header className="mb-10">
-                    <h1 className="font-serif text-3xl md:text-4xl font-semibold text-fg mb-3">{post.title}</h1>
+                    <h1 className="font-serif text-3xl md:text-4xl font-semibold text-fg mb-3"><GlitchText>{post.title}</GlitchText></h1>
                     <span className="font-mono text-xs text-fg-faint">{post.date}</span>
                 </header>
                 <div

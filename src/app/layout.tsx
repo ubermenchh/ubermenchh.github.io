@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, EB_Garamond } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import Navigation from "@/components/Navigation";
@@ -33,11 +34,16 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${ebGaramond.variable} ${jetbrainsMono.variable} antialiased bg-bg min-h-screen`}>
+            <body suppressHydrationWarning className={`${ebGaramond.variable} ${jetbrainsMono.variable} antialiased bg-bg min-h-screen`}>
                 <ThemeProvider>
                     <Navigation />
                     <main>{children}</main>
                 </ThemeProvider>
+                <Script
+                    data-goatcounter="https://ubermenchh.goatcounter.com/count"
+                    src="//gc.zgo.at/count.js"
+                    strategy="afterInteractive"
+                />
             </body>
         </html>
     );

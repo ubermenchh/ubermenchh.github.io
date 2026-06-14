@@ -5,11 +5,13 @@ import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 import GlitchText from "@/components/GlitchText";
 
+
 export default function Navigation() {
     const pathname = usePathname();
 
     const links = [
         { name: "Home", path: "/" },
+        { name: "Now", path: "/now" },
         { name: "Blog", path: "/blog" },
         { name: "Writing", path: "/writing" },
         { name: "Resume", path: "/resume" },
@@ -34,7 +36,7 @@ export default function Navigation() {
                                 : "text-fg-muted hover:text-fg"
                         }`}
                     >
-                        <GlitchText>{link.name}</GlitchText>
+                        {link.name}
                     </Link>
                 ))}
                 <ThemeToggle />
